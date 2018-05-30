@@ -1,0 +1,37 @@
+<div [@routerTransition]>
+    <app-page-header  [icon]="'fa-table'"></app-page-header>
+    
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+            
+             <div class="card mb-3">
+                <div class="card-header"><div>Users Table</div><button class="btn btn-primary"><b>+</b></button></div>
+                 
+                <table class="card-body table table-hover">
+                    <thead>
+                    <tr >
+                        <th *ngFor="let item of usertitle">{{item.name}}</th>
+                       
+                    </tr>
+                    </thead>
+                    <tbody>
+                   <tr  *ngFor="let item of filteredItems" >
+                              
+                       <td>{{item.firstName}} {{item.lastName}} </td>
+                       <td>{{item.email}}</td>
+                       <td>{{item.mobno}}</td>
+                       <td>{{item.college.name}}</td>
+                       <td>{{item.branch}}</td>
+                    
+                       
+                                
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
