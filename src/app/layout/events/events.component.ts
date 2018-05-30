@@ -57,7 +57,7 @@ EventData = [];
   }
   Add(){
   console.log(this.action);
-  this.router.navigate(['/eventsform'],{queryParams: "add"});
+  this.router.navigate(['/eventsform'],{queryParams: this.action});
   
   }
   
