@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
-import firebase from 'firebase';
+import * as firebase from 'firebase';
 
 
 @Component({
@@ -21,7 +21,7 @@ data : any;
 name: string = " ";
 date: string =" ";
 joblocation: string = " ";
-
+key: string = " ";
 event : any;
 userRef : any;
 userRef1 : any;
@@ -34,7 +34,7 @@ registerForm: FormGroup;
    this.route.queryParams.subscribe(params => {
         this.data = params;
             console.log(this.data);
-           var s = "events/" + this.data.uid;
+           var s = "events/" + this.data.key;
            
             this.userRef = firebase.database().ref(s);
         });
@@ -70,14 +70,19 @@ registerForm: FormGroup;
         
     
     
-    console.log(this.data[0]);
+   // console.log(this.data.toString());
     
-    if(this.data[0] === 'a')
+    if(!this.data.key)
     {
     
     console.log("add called");
     
-    this.userRef1.push(u);
+    var x = this.userRef1.push(u);
+      var y = "events/" + x.key;
+      firebase.database().ref(y).update({key: x.key});
+      
+    console.log(x.key);
+ 
     
     }
     else{
